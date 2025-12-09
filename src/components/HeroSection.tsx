@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 
 export const HeroSection = () => {
   return (
@@ -59,7 +59,7 @@ export const HeroSection = () => {
           className="mb-6"
         >
           <span className="inline-flex items-center px-4 py-1.5 rounded-full glass text-xs font-medium tracking-wider text-muted-foreground uppercase">
-            Web Design Agency
+            Nexouria Studios
           </span>
         </motion.div>
 
@@ -80,7 +80,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed"
         >
-          Nexouria builds digital infrastructure for brands ready to dominate the future.
+          Nexouria builds digital infrastructure for brands ready to dominate.
         </motion.p>
 
         <motion.div
@@ -89,19 +89,24 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-medium text-base glow-primary transition-all duration-300 hover:scale-105"
-          >
-            Start Your Project
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </a>
-          <a
+          <motion.a
             href="#work"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full glass card-glow text-foreground font-medium text-base transition-all duration-300 hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full glass glow-primary text-foreground font-medium text-base transition-all duration-300"
           >
-            View Our Work
-          </a>
+            View Selected Works
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </motion.a>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--foreground))", color: "hsl(var(--background))" }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-foreground/30 text-foreground font-medium text-base transition-all duration-300 hover:border-foreground"
+          >
+            <Calendar className="w-4 h-4" />
+            Book Consultation
+          </motion.a>
         </motion.div>
 
         {/* Scroll indicator */}

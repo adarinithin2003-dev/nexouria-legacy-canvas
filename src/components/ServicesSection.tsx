@@ -1,30 +1,27 @@
 import { motion } from "framer-motion";
-import { Code2, Layers, Box, Zap } from "lucide-react";
+import { Rocket, TrendingUp, Crown, ArrowRight } from "lucide-react";
 
 const services = [
   {
-    icon: Code2,
-    title: "Custom Web Development",
-    description: "Pixel-perfect, performant code tailored to your brand's unique requirements. No templates, no compromises.",
-    size: "large",
+    icon: Rocket,
+    title: "Launchpad",
+    subtitle: "For Startups",
+    description: "Get your MVP live fast with a stunning, conversion-focused website that scales with your growth.",
+    features: ["Landing Page", "Mobile Responsive", "SEO Foundation", "Analytics Setup"],
   },
   {
-    icon: Layers,
-    title: "UI/UX Architecture",
-    description: "Strategic design systems that scale with your growth.",
-    size: "medium",
+    icon: TrendingUp,
+    title: "Growth Engine",
+    subtitle: "For Scaling Brands",
+    description: "Advanced digital infrastructure with custom features, integrations, and performance optimization.",
+    features: ["Custom Development", "API Integrations", "Performance Tuning", "Advanced Analytics"],
   },
   {
-    icon: Box,
-    title: "3D Web Experiences",
-    description: "Immersive WebGL & Three.js.",
-    size: "small",
-  },
-  {
-    icon: Zap,
-    title: "Speed Optimization",
-    description: "Sub-second load times that convert visitors into customers.",
-    size: "medium",
+    icon: Crown,
+    title: "Legacy Architect",
+    subtitle: "For Enterprises",
+    description: "Full-scale digital transformation with bespoke solutions, dedicated support, and ongoing evolution.",
+    features: ["Enterprise Solutions", "Dedicated Team", "24/7 Support", "Continuous Evolution"],
   },
 ];
 
@@ -59,10 +56,10 @@ export const ServicesSection = () => {
           className="text-center mb-16 md:mb-20"
         >
           <span className="inline-flex items-center px-4 py-1.5 rounded-full glass text-xs font-medium tracking-wider text-muted-foreground uppercase mb-6">
-            What We Do
+            What We Build
           </span>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground tracking-tight">
-            Services Built for <span className="text-gradient-accent">Impact</span>
+            Digital <span className="text-gradient-accent">Architectures</span>
           </h2>
         </motion.div>
 
@@ -71,79 +68,54 @@ export const ServicesSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
         >
-          {/* Large card - spans 2 cols */}
-          <motion.div
-            variants={itemVariants}
-            className="md:col-span-2 md:row-span-2 glass card-glow rounded-2xl p-8 md:p-10 flex flex-col justify-between min-h-[300px] md:min-h-[400px]"
-          >
-            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Code2 className="w-7 h-7 text-primary" />
-            </div>
-            <div>
+          {services.map((service) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className="group glass card-glow rounded-2xl p-8 flex flex-col min-h-[450px]"
+            >
+              {/* Icon */}
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                <service.icon className="w-7 h-7 text-primary" />
+              </div>
+
+              {/* Title */}
+              <p className="text-xs font-medium text-primary uppercase tracking-wider mb-2">
+                {service.subtitle}
+              </p>
               <h3 className="font-serif text-2xl md:text-3xl font-medium text-foreground mb-4">
-                {services[0].title}
+                {service.title}
               </h3>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                {services[0].description}
-              </p>
-            </div>
-          </motion.div>
 
-          {/* Medium card */}
-          <motion.div
-            variants={itemVariants}
-            className="md:col-span-2 glass card-glow rounded-2xl p-8 flex flex-col justify-between min-h-[200px]"
-          >
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-              <Layers className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-serif text-xl md:text-2xl font-medium text-foreground mb-2">
-                {services[1].title}
-              </h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                {services[1].description}
+              {/* Description */}
+              <p className="text-muted-foreground text-base leading-relaxed mb-6">
+                {service.description}
               </p>
-            </div>
-          </motion.div>
 
-          {/* Small card */}
-          <motion.div
-            variants={itemVariants}
-            className="glass card-glow rounded-2xl p-6 md:p-8 flex flex-col justify-between min-h-[180px]"
-          >
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-              <Box className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-serif text-lg md:text-xl font-medium text-foreground mb-1">
-                {services[2].title}
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                {services[2].description}
-              </p>
-            </div>
-          </motion.div>
+              {/* Features */}
+              <ul className="space-y-2 mb-8 flex-grow">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
 
-          {/* Medium card */}
-          <motion.div
-            variants={itemVariants}
-            className="glass card-glow rounded-2xl p-6 md:p-8 flex flex-col justify-between min-h-[180px]"
-          >
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-              <Zap className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-serif text-lg md:text-xl font-medium text-foreground mb-1">
-                {services[3].title}
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                {services[3].description}
-              </p>
-            </div>
-          </motion.div>
+              {/* CTA Button */}
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-foreground/20 text-foreground font-medium text-sm transition-all duration-300 hover:bg-foreground hover:text-background hover:border-foreground"
+              >
+                Inquire About This
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

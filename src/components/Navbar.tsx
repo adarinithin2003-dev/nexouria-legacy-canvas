@@ -2,13 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Services", href: "#services" },
-  { name: "Process", href: "#process" },
-  { name: "Work", href: "#work" },
-];
-
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,26 +28,15 @@ export const Navbar = () => {
           Nexouria
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-
-        {/* CTA Button */}
-        <a
+        {/* CTA Button - Desktop */}
+        <motion.a
           href="#contact"
-          className="hidden md:inline-flex items-center px-5 py-2.5 text-sm font-medium rounded-full glass card-glow text-foreground hover:text-primary-foreground hover:bg-primary/20 transition-all duration-300"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
+          className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-medium rounded-full glass glow-primary text-foreground transition-all duration-300"
         >
-          Start Your Project
-        </a>
+          Start Project
+        </motion.a>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -75,23 +57,35 @@ export const Navbar = () => {
             className="md:hidden glass-strong mt-4 mx-4 rounded-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+              <a
+                href="#work"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Portfolio
+              </a>
+              <a
+                href="#services"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Services
+              </a>
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 px-5 py-3 text-center text-sm font-medium rounded-full bg-primary text-primary-foreground"
+                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
-                Start Your Project
+                Contact
               </a>
+              <motion.a
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                whileTap={{ scale: 0.98 }}
+                className="mt-2 px-5 py-3 text-center text-sm font-medium rounded-full glass glow-primary text-foreground"
+              >
+                Start Project
+              </motion.a>
             </nav>
           </motion.div>
         )}
