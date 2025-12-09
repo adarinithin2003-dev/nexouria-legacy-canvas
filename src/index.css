@@ -35,6 +35,9 @@
 
     --radius: 0.75rem;
 
+    /* WhatsApp color */
+    --whatsapp: 142 70% 49%;
+
     /* Custom Nexouria tokens */
     --void: 0 0% 2%;
     --void-lighter: 0 0% 4%;

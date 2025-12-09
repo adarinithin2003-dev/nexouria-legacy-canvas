@@ -59,6 +59,7 @@ export default {
           primary: "hsl(var(--glow-primary))",
           cyan: "hsl(var(--glow-cyan))",
         },
+        whatsapp: "hsl(var(--whatsapp))",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,10 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { LogoTicker } from "@/components/LogoTicker";
-import { ServicesSection } from "@/components/ServicesSection";
-import { ProcessSection } from "@/components/ProcessSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   return (
@@ -17,11 +18,14 @@ const Index = () => {
       <main>
         <HeroSection />
         <LogoTicker />
-        <ServicesSection />
-        <ProcessSection />
         <PortfolioSection />
+        <ServicesSection />
+        <ContactSection />
       </main>
       <Footer />
+      
+      {/* Floating WhatsApp Button */}
+      <FloatingWhatsApp />
     </div>
   );
 };
