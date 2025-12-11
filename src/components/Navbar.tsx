@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+const navLinks = [
+  { name: "Home", href: "#home" },
+  { name: "Services", href: "#services" },
+  { name: "Portfolio", href: "#portfolio" },
+  { name: "Contact", href: "#contact" },
+];
+
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -24,18 +31,32 @@ export const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <a href="#home" className="font-serif text-2xl font-semibold tracking-tight text-foreground">
-          Nexouria
+        {/* Logo */}
+        <a href="#home" className="font-serif text-xl font-bold tracking-tight text-foreground uppercase">
+          NEXOURIA DIGITAL
         </a>
+
+        {/* Center Navigation - Desktop */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
 
         {/* CTA Button - Desktop */}
         <motion.a
           href="#contact"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-medium rounded-full glass glow-primary text-foreground transition-all duration-300"
+          className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full bg-primary text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/30"
         >
-          Start Project
+          INQUIRE
         </motion.a>
 
         {/* Mobile Menu Toggle */}
@@ -57,34 +78,23 @@ export const Navbar = () => {
             className="md:hidden glass-strong mt-4 mx-4 rounded-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
-              <a
-                href="#work"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Portfolio
-              </a>
-              <a
-                href="#services"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Services
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Contact
-              </a>
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
               <motion.a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 whileTap={{ scale: 0.98 }}
-                className="mt-2 px-5 py-3 text-center text-sm font-medium rounded-full glass glow-primary text-foreground"
+                className="mt-2 px-5 py-3 text-center text-sm font-semibold rounded-full bg-primary text-primary-foreground"
               >
-                Start Project
+                INQUIRE
               </motion.a>
             </nav>
           </motion.div>

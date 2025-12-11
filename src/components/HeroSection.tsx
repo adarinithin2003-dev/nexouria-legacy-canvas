@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { Play } from "lucide-react";
 
 export const HeroSection = () => {
   return (
@@ -59,7 +59,7 @@ export const HeroSection = () => {
           className="mb-6"
         >
           <span className="inline-flex items-center px-4 py-1.5 rounded-full glass text-xs font-medium tracking-wider text-muted-foreground uppercase">
-            Nexouria Studios
+            Nexouria Digital
           </span>
         </motion.div>
 
@@ -67,11 +67,11 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight text-foreground mb-8 leading-[1.1]"
+          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-foreground mb-8 leading-[1.1]"
         >
-          Crafting Digital
+          Elevating Brands through
           <br />
-          <span className="text-gradient-accent">Legacies.</span>
+          <span className="text-gradient-accent">Digital Innovation.</span>
         </motion.h1>
 
         <motion.p
@@ -80,7 +80,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed"
         >
-          Nexouria builds digital infrastructure for brands ready to dominate.
+          Nexouria Digital builds high-performance digital infrastructure for brands ready to dominate.
         </motion.p>
 
         <motion.div
@@ -90,22 +90,21 @@ export const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.a
-            href="#work"
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="group inline-flex items-center gap-2 px-8 py-4 rounded-full glass glow-primary text-foreground font-medium text-base transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 shadow-lg shadow-primary/30"
           >
-            View Selected Works
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            Inquire
           </motion.a>
           <motion.a
-            href="#contact"
+            href="#portfolio"
             whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--foreground))", color: "hsl(var(--background))" }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-foreground/30 text-foreground font-medium text-base transition-all duration-300 hover:border-foreground"
           >
-            <Calendar className="w-4 h-4" />
-            Book Consultation
+            <Play className="w-4 h-4" />
+            Watch Our Work
           </motion.a>
         </motion.div>
 
