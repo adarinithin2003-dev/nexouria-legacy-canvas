@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Mail, Phone } from "lucide-react";
+import { MessageCircle, Mail, Phone, FileText } from "lucide-react";
 
 export const ContactSection = () => {
   return (
@@ -12,16 +12,39 @@ export const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground tracking-tight mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground tracking-tight mb-8">
             Ready to Build Your <span className="text-gradient-accent">Legacy?</span>
           </h2>
 
-          {/* CTA Buttons */}
+          {/* Inquiry Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass rounded-2xl p-8 mb-8 card-glow"
+          >
+            <FileText className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-foreground mb-2">Have a vision?</h3>
+            <p className="text-muted-foreground mb-6">Fill our requirements form to get started.</p>
+            <motion.a
+              href="https://forms.gle/yRr9S7CBdBNpra8c9"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full btn-gradient text-primary-foreground font-semibold transition-all duration-300"
+            >
+              Start Inquiry
+            </motion.a>
+          </motion.div>
+
+          {/* Social Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
           >
             <motion.a

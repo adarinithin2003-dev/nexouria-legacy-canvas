@@ -1,8 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
+import { TechMarquee } from "@/components/TechMarquee";
 import { StatsSection } from "@/components/StatsSection";
 import { PortfolioSection } from "@/components/PortfolioSection";
-import { ServicesSection } from "@/components/ServicesSection";
+import { ProcessSection } from "@/components/ProcessSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { FAQSection } from "@/components/FAQSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { FloatingWidgets } from "@/components/FloatingWidgets";
@@ -17,9 +20,12 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <TechMarquee />
         <StatsSection />
-        <ServicesSection />
         <PortfolioSection />
+        <ProcessSection />
+        <TestimonialsSection />
+        <FAQSection />
         <ContactSection />
       </main>
       <Footer />
