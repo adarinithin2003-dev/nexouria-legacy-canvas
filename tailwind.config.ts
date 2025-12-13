@@ -56,10 +56,11 @@ export default {
           lighter: "hsl(var(--void-lighter))",
         },
         glow: {
-          primary: "hsl(var(--glow-primary))",
           cyan: "hsl(var(--glow-cyan))",
+          purple: "hsl(var(--glow-purple))",
         },
         whatsapp: "hsl(var(--whatsapp))",
+        instagram: "hsl(var(--instagram))",
       },
       borderRadius: {
         lg: "var(--radius)",

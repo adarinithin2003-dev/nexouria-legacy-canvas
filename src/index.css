@@ -14,8 +14,13 @@
     --popover: 0 0% 4%;
     --popover-foreground: 220 14% 96%;
 
-    --primary: 239 84% 67%;
-    --primary-foreground: 0 0% 100%;
+    /* Neon Cyan Primary */
+    --primary: 186 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Electric Purple Accent */
+    --accent: 271 76% 53%;
+    --accent-foreground: 0 0% 100%;
 
     --secondary: 0 0% 8%;
     --secondary-foreground: 220 14% 96%;
@@ -23,37 +28,28 @@
     --muted: 0 0% 12%;
     --muted-foreground: 220 9% 60%;
 
-    --accent: 239 84% 67%;
-    --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 0 0% 14%;
     --input: 0 0% 14%;
-    --ring: 239 84% 67%;
+    --ring: 186 100% 50%;
 
     --radius: 0.75rem;
 
-    /* WhatsApp color */
+    /* Social colors */
     --whatsapp: 142 70% 49%;
+    --instagram: 340 75% 55%;
 
     /* Custom Nexouria tokens */
     --void: 0 0% 2%;
     --void-lighter: 0 0% 4%;
-    --glow-primary: 239 84% 67%;
-    --glow-cyan: 180 100% 50%;
-    --text-primary: 220 14% 96%;
-    --text-muted: 220 9% 55%;
+    --glow-cyan: 186 100% 50%;
+    --glow-purple: 271 76% 53%;
 
     /* Glass effect tokens */
     --glass-bg: 0 0% 100% / 0.03;
     --glass-border: 0 0% 100% / 0.08;
-    --glass-blur: 20px;
-
-    /* Gradient tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(200 100% 60%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(239 84% 67% / 0.15) 0%, transparent 70%);
   }
 
   .dark {
@@ -104,15 +100,9 @@
     @apply bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12];
   }
 
-  /* Glow effects */
-  .glow-primary {
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.3),
-                0 0 80px hsl(var(--primary) / 0.15);
-  }
-
-  .glow-border {
-    box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.3),
-                0 0 20px hsl(var(--primary) / 0.15);
+  /* Gradient button */
+  .btn-gradient {
+    background: linear-gradient(135deg, hsl(var(--glow-cyan)) 0%, hsl(var(--glow-purple)) 100%);
   }
 
   /* Text gradients */
@@ -123,7 +113,7 @@
 
   .text-gradient-accent {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(180 100% 60%) 100%);
+    background-image: linear-gradient(135deg, hsl(var(--glow-cyan)) 0%, hsl(var(--glow-purple)) 100%);
   }
 
   /* Animated gradient blob */
@@ -136,34 +126,20 @@
   }
 
   @keyframes blob-float {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    50% {
-      transform: translate(-20px, 20px) scale(0.95);
-    }
-    75% {
-      transform: translate(40px, 30px) scale(1.05);
-    }
-  }
-
-  /* Scroll animations base */
-  .scroll-fade-up {
-    opacity: 0;
-    transform: translateY(40px);
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -50px) scale(1.1); }
+    50% { transform: translate(-20px, 20px) scale(0.95); }
+    75% { transform: translate(40px, 30px) scale(1.05); }
   }
 
   /* Timeline glow line */
   .timeline-line {
     background: linear-gradient(180deg, 
-      hsl(var(--primary)) 0%, 
-      hsl(180 100% 60%) 50%,
-      hsl(var(--primary)) 100%
+      hsl(var(--glow-cyan)) 0%, 
+      hsl(var(--glow-purple)) 50%,
+      hsl(var(--glow-cyan)) 100%
     );
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.5);
   }
 
   /* Hover card glow */
@@ -172,8 +148,18 @@
   }
 
   .card-glow:hover {
-    border-color: hsl(var(--primary) / 0.4);
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.15),
-                inset 0 0 0 1px hsl(var(--primary) / 0.2);
+    border-color: hsl(var(--glow-cyan) / 0.4);
+    box-shadow: 0 0 30px hsl(var(--glow-cyan) / 0.15),
+                inset 0 0 0 1px hsl(var(--glow-cyan) / 0.2);
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
   }
 }
