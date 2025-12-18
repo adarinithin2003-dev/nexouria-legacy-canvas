@@ -3,7 +3,7 @@ import { MessageCircle, Mail, Phone, FileText } from "lucide-react";
 
 export const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-32 md:py-40">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -12,8 +12,8 @@ export const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground tracking-tight mb-8">
-            Ready to Build Your <span className="text-gradient-accent">Legacy?</span>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-8 text-gradient-hero">
+            Ready to Build Your Legacy?
           </h2>
 
           {/* Inquiry Card */}
@@ -33,7 +33,7 @@ export const ContactSection = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full btn-gradient text-primary-foreground font-semibold transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold transition-all duration-300 shadow-lg shadow-primary/30 btn-pulse"
             >
               Start Inquiry
             </motion.a>
