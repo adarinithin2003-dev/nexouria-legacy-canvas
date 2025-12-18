@@ -30,7 +30,7 @@ const features = [
 
 export const BlueprintSection = () => {
   return (
-    <section id="services" className="py-32 relative">
+    <section id="services" className="py-32 lg:py-40 relative">
       <div className="container px-4">
         {/* Header */}
         <motion.div
@@ -51,16 +51,16 @@ export const BlueprintSection = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {services.map((service, index) => (
-            <motion.div
+            <motion.article
               key={service.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glass-card group p-8 rounded-2xl"
+              className="glass-card group p-8 lg:p-10 rounded-2xl"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                <service.icon className="w-7 h-7 text-primary" />
+              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                <service.icon className="w-8 h-8 text-primary icon-pulse" />
               </div>
               <h3 className="font-serif text-xl md:text-2xl font-medium mb-4 text-foreground">
                 {service.title}
@@ -68,7 +68,7 @@ export const BlueprintSection = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {service.description}
               </p>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
@@ -85,7 +85,7 @@ export const BlueprintSection = () => {
               key={index}
               className="flex items-center gap-3 text-muted-foreground"
             >
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <feature.icon className="w-5 h-5 text-primary" />
               </div>
               <span className="text-sm md:text-base font-medium">{feature.text}</span>

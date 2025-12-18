@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
+import { TrustTicker } from "@/components/TrustTicker";
 import { TechMarquee } from "@/components/TechMarquee";
 import { StatsSection } from "@/components/StatsSection";
 import { BlueprintSection } from "@/components/BlueprintSection";
@@ -13,14 +14,22 @@ import { FloatingWidgets } from "@/components/FloatingWidgets";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen bg-background">
+    <div className="relative min-h-screen" style={{ backgroundColor: '#0a0a0a' }}>
+      {/* Aurora ambient gradients */}
+      <div className="aurora-gradient aurora-top-right" />
+      <div className="aurora-gradient aurora-bottom-left" />
+      
       {/* Noise overlay */}
       <div className="noise-overlay" />
       
       {/* Main content */}
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
+      
       <main>
         <HeroSection />
+        <TrustTicker />
         <TechMarquee />
         <StatsSection />
         <BlueprintSection />
@@ -30,6 +39,7 @@ const Index = () => {
         <FAQSection />
         <ContactSection />
       </main>
+      
       <Footer />
       
       {/* Floating Widgets */}
