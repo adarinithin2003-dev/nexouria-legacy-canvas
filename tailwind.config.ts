@@ -58,6 +58,7 @@ export default {
         glow: {
           cyan: "hsl(var(--glow-cyan))",
           purple: "hsl(var(--glow-purple))",
+          blue: "hsl(var(--glow-blue))",
         },
         whatsapp: "hsl(var(--whatsapp))",
         instagram: "hsl(var(--instagram))",

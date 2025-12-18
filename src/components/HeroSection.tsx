@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, ArrowRight } from "lucide-react";
 
 export const HeroSection = () => {
   return (
@@ -10,7 +10,7 @@ export const HeroSection = () => {
       {/* Animated gradient blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="gradient-blob w-[600px] h-[600px] bg-primary/30 -top-40 -left-40"
+          className="gradient-blob w-[700px] h-[700px] bg-primary/20 -top-40 -left-40"
           animate={{
             x: [0, 50, -30, 0],
             y: [0, -40, 30, 0],
@@ -23,7 +23,7 @@ export const HeroSection = () => {
           }}
         />
         <motion.div
-          className="gradient-blob w-[500px] h-[500px] bg-glow-cyan/20 top-1/3 -right-40"
+          className="gradient-blob w-[600px] h-[600px] bg-accent/15 top-1/3 -right-40"
           animate={{
             x: [0, -40, 60, 0],
             y: [0, 50, -30, 0],
@@ -36,7 +36,7 @@ export const HeroSection = () => {
           }}
         />
         <motion.div
-          className="gradient-blob w-[400px] h-[400px] bg-primary/20 bottom-0 left-1/3"
+          className="gradient-blob w-[500px] h-[500px] bg-primary/15 bottom-0 left-1/3"
           animate={{
             x: [0, 30, -50, 0],
             y: [0, -60, 20, 0],
@@ -56,10 +56,10 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
+          className="mb-8"
         >
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full glass text-xs font-medium tracking-wider text-muted-foreground uppercase">
-            Nexouria Digital
+          <span className="inline-flex items-center px-5 py-2 rounded-full glass text-xs font-semibold tracking-widest text-muted-foreground uppercase">
+            Premium Digital Agency
           </span>
         </motion.div>
 
@@ -67,44 +67,47 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 leading-[1.1] text-gradient-hero"
+          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-medium tracking-tight mb-8 leading-[1.05] text-gradient-hero"
         >
-          Elevating Brands through
+          Crafting Digital
           <br />
-          Digital Innovation.
+          Legacies.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-12 leading-relaxed"
+          className="max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-muted-foreground mb-14 leading-relaxed"
         >
-          Nexouria Digital builds high-performance digital infrastructure for brands ready to dominate.
+          We engineer digital infrastructures designed for global dominance.
+          <br className="hidden md:block" />
+          <span className="text-foreground/90 font-medium">Fast. Scalable. Timeless.</span>
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5"
         >
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 shadow-lg shadow-primary/30 btn-pulse"
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-full btn-primary-glow btn-pulse text-base"
           >
-            Get Started
+            Start Your Project
+            <ArrowRight className="w-5 h-5" />
           </motion.a>
           <motion.a
             href="#portfolio"
-            whileHover={{ scale: 1.05, backgroundColor: "hsl(var(--foreground))", color: "hsl(var(--background))" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-foreground/30 text-foreground font-medium text-base transition-all duration-300 hover:border-foreground"
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-full btn-outline-glow text-base"
           >
-            <Play className="w-4 h-4" />
-            Watch Our Work
+            <Play className="w-5 h-5" />
+            View Our Work
           </motion.a>
         </motion.div>
 
