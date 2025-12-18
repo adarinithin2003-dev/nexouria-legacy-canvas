@@ -21,7 +21,7 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-32 md:py-40">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,8 +30,8 @@ export const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-medium text-foreground tracking-tight">
-            Client <span className="text-gradient-accent">Perspectives</span>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-gradient-hero">
+            Client Perspectives
           </h2>
         </motion.div>
 

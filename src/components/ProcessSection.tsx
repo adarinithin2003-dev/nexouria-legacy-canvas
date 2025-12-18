@@ -26,7 +26,7 @@ const steps = [
 
 export const ProcessSection = () => {
   return (
-    <section id="process" className="py-24 md:py-32">
+    <section id="process" className="py-32 md:py-40">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,8 +35,8 @@ export const ProcessSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-medium text-foreground tracking-tight mb-4">
-            How We Build <span className="text-gradient-accent">Legacies</span>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-4 text-gradient-hero">
+            How We Build Legacies
           </h2>
         </motion.div>
 

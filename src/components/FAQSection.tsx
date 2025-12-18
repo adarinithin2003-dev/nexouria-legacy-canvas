@@ -23,7 +23,7 @@ const faqs = [
 
 export const FAQSection = () => {
   return (
-    <section id="faq" className="py-24 md:py-32">
+    <section id="faq" className="py-32 md:py-40">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -32,8 +32,8 @@ export const FAQSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-4xl md:text-5xl font-medium text-foreground tracking-tight">
-            Frequently Asked <span className="text-gradient-accent">Questions</span>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-gradient-hero">
+            Frequently Asked Questions
           </h2>
         </motion.div>
 

@@ -60,7 +60,7 @@ export const PortfolioSection = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   return (
-    <section id="portfolio" className="py-24 md:py-32">
+    <section id="portfolio" className="py-32 md:py-40">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -69,7 +69,7 @@ export const PortfolioSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground tracking-tight uppercase">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight uppercase text-gradient-hero">
             Portfolio
           </h2>
         </motion.div>

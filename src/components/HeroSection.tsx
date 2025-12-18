@@ -67,11 +67,11 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-foreground mb-8 leading-[1.1]"
+          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 leading-[1.1] text-gradient-hero"
         >
           Elevating Brands through
           <br />
-          <span className="text-gradient-accent">Digital Innovation.</span>
+          Digital Innovation.
         </motion.h1>
 
         <motion.p
@@ -93,9 +93,9 @@ export const HeroSection = () => {
             href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 shadow-lg shadow-primary/30"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 shadow-lg shadow-primary/30 btn-pulse"
           >
-            Inquire
+            Get Started
           </motion.a>
           <motion.a
             href="#portfolio"
