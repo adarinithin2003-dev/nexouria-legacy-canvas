@@ -10,11 +10,28 @@ import {
 
 const projects = [
   {
+    id: "stuti",
+    title: "Stuti Boutique",
+    category: "Brand Identity • Web Design • Workflow Automation",
+    description: "Complete digital transformation with smart order management",
+    image: null, // Privacy-focused: no client screenshots
+    placeholderText: "SB",
+    client: "Stuti Boutique",
+    duration: "5 Weeks",
+    team: "3 Designers",
+    overview: "Engineered a complete digital transformation. We crafted a unique brand identity and logo, followed by a high-performance landing page. The core feature is a custom-built Order Collection System that triggers real-time, dual-channel notifications—instantly alerting both the owner and the customer upon successful transactions.",
+    challenges: "Building a seamless order notification system that reliably delivers instant updates across multiple channels while maintaining a clean, elegant brand presence.",
+    results: "Streamlined order management, improved customer communication, and established a premium brand presence in the local market.",
+    techStack: ["React", "Tailwind CSS", "Supabase", "Email Automation"],
+    liveUrl: "#",
+  },
+  {
     id: "velos",
     title: "Velos Architects",
     category: "Luxury Real Estate",
     description: "Premium architectural visualization platform",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&q=80",
+    placeholderText: null,
     client: "Velos Group",
     duration: "4 Weeks",
     team: "3 Designers",
@@ -30,6 +47,7 @@ const projects = [
     category: "D2C Skincare",
     description: "Elegant e-commerce experience",
     image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&h=600&fit=crop&q=80",
+    placeholderText: null,
     client: "Aura Botanics",
     duration: "6 Weeks",
     team: "4 Designers",
@@ -37,21 +55,6 @@ const projects = [
     challenges: "Balancing the organic brand feel with modern e-commerce functionality and complex inventory management.",
     results: "200% increase in online sales, 60% reduction in cart abandonment, and improved customer retention by 45%.",
     techStack: ["React", "Tailwind CSS", "Shopify", "GraphQL"],
-    liveUrl: "#",
-  },
-  {
-    id: "krypton",
-    title: "Krypton Capital",
-    category: "FinTech Dashboard",
-    description: "Next-gen financial analytics",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80",
-    client: "Krypton Capital",
-    duration: "8 Weeks",
-    team: "5 Designers",
-    overview: "A sophisticated financial dashboard that transforms complex data into actionable insights for investment professionals.",
-    challenges: "Processing real-time financial data while maintaining a clean, intuitive interface for complex operations.",
-    results: "35% faster decision making, 90% user satisfaction rate, and successful Series A funding presentation.",
-    techStack: ["React", "TypeScript", "D3.js", "WebSocket"],
     liveUrl: "#",
   },
 ];
@@ -87,12 +90,24 @@ export const PortfolioSection = () => {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden glass card-glow">
                 <div className="absolute inset-0 bg-secondary/50 p-3 md:p-4">
-                  <div className="relative w-full h-full rounded-lg overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                  <div className="relative w-full h-full rounded-lg overflow-hidden flex items-center justify-center bg-background/80">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center text-center p-6">
+                        <span className="font-serif text-5xl md:text-6xl font-bold text-gradient-hero mb-2">
+                          {project.placeholderText}
+                        </span>
+                        <span className="text-sm text-muted-foreground font-medium tracking-wider uppercase">
+                          {project.title}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 </div>

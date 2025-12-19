@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Linkedin, Instagram, Twitter, Globe } from "lucide-react";
+import nexouriaLogo from "@/assets/nexouria-logo.jpeg";
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -27,9 +28,7 @@ export const Footer = () => {
         >
           {/* Logo & Brand */}
           <div>
-            <h2 className="font-serif text-3xl md:text-4xl font-medium text-gradient-hero mb-4">
-              Nexouria
-            </h2>
+            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-[50px] w-auto mb-4" />
             <p className="text-muted-foreground leading-relaxed max-w-xs">
               Crafting digital legacies for visionary brands ready to dominate the global stage.
             </p>
