@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import nexouriaLogo from "@/assets/nexouria-logo.jpeg";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -32,8 +33,8 @@ export const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="font-serif text-xl font-bold tracking-tight text-foreground uppercase">
-          NEXOURIA DIGITAL
+        <a href="#home" className="flex items-center">
+          <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto" />
         </a>
 
         {/* Center Navigation - Desktop */}
@@ -78,6 +79,7 @@ export const Navbar = () => {
             className="md:hidden glass-strong mt-4 mx-4 rounded-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
+              <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto mb-4" />
               {navLinks.map((link) => (
                 <a
                   key={link.name}
