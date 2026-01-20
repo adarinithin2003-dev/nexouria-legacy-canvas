@@ -5,7 +5,7 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden pt-20"
     >
       {/* Mesh Gradient Blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -51,7 +51,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 text-center px-4">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-medium tracking-tight mb-8 leading-[1.05] text-gradient-hero"
+          className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tight mb-8 leading-[1.1] text-gradient-hero max-w-4xl mx-auto"
         >
           Elevating Brands
           <br />
@@ -78,7 +78,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-muted-foreground mb-14 leading-relaxed"
+          className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-muted-foreground mb-12 leading-relaxed"
         >
           Nexouria Digital builds high-performance digital infrastructure.
           <br className="hidden md:block" />
@@ -89,7 +89,7 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.a
             href="https://forms.gle/yRr9S7CBdBNpra8c9"
@@ -97,7 +97,7 @@ export const HeroSection = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-full btn-gradient btn-shimmer btn-glow text-background font-semibold text-base"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full btn-gradient btn-shimmer btn-glow text-background font-semibold text-sm md:text-base w-full sm:w-auto justify-center"
           >
             Start Your Project
             <ArrowRight className="w-5 h-5" />
@@ -107,29 +107,29 @@ export const HeroSection = () => {
             download="Nexouria_Brochure.png"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 rounded-full glass btn-outline-glow text-base"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full glass btn-outline-glow text-sm md:text-base w-full sm:w-auto justify-center"
           >
             <Download className="w-5 h-5" />
             Download Brochure
           </motion.a>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2"
-          >
-            <div className="w-1 h-2 rounded-full bg-primary/50" />
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2"
+        >
+          <div className="w-1 h-2 rounded-full bg-primary/50" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

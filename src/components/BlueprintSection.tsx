@@ -30,26 +30,26 @@ const features = [
 
 export const BlueprintSection = () => {
   return (
-    <section id="services" className="py-32 lg:py-40 relative">
-      <div className="container px-4">
+    <section id="services" className="py-20 md:py-24 relative">
+      <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium mb-6 text-gradient-hero">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium mb-6 text-gradient-hero">
             The Blueprint for Your Digital Legacy
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We don't just build websites. We engineer digital infrastructures designed to scale.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {services.map((service, index) => (
             <motion.article
               key={service.title}
@@ -57,15 +57,15 @@ export const BlueprintSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glass-card group p-8 lg:p-10 rounded-2xl"
+              className="glass-card group p-6 md:p-8 lg:p-10 rounded-2xl h-full flex flex-col"
             >
-              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                <service.icon className="w-8 h-8 text-primary icon-pulse" />
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-5 md:mb-6 group-hover:bg-primary/20 transition-colors duration-300 flex-shrink-0">
+                <service.icon className="w-7 h-7 md:w-8 md:h-8 text-primary icon-pulse" />
               </div>
-              <h3 className="font-serif text-xl md:text-2xl font-medium mb-4 text-foreground">
+              <h3 className="font-serif text-lg md:text-xl lg:text-2xl font-medium mb-3 md:mb-4 text-foreground">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed flex-grow">
                 {service.description}
               </p>
             </motion.article>
@@ -78,15 +78,15 @@ export const BlueprintSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-6 md:gap-12"
+          className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 md:gap-8 lg:gap-12"
         >
           {features.map((feature, index) => (
             <div
               key={index}
               className="flex items-center gap-3 text-muted-foreground"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <feature.icon className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               </div>
               <span className="text-sm md:text-base font-medium">{feature.text}</span>
             </div>
