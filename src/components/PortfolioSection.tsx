@@ -27,20 +27,12 @@ const projects = [
     description: "Premium organic skincare brand seeking to establish luxury credentials online. We designed an elegant storefront with sophisticated product showcases and seamless checkout flow.",
     color: "from-primary/15 to-accent/15",
   },
-  {
-    id: 3,
-    name: "Krypton Capital",
-    initials: "KC",
-    tags: ["Web App", "Dashboard Design", "Data Visualization"],
-    description: "Fintech startup requiring a powerful dashboard for portfolio management. We engineered a real-time data platform with intuitive charts and secure authentication.",
-    color: "from-accent/20 to-primary/20",
-  },
 ];
 
 export const PortfolioSection = () => {
   return (
     <section id="portfolio" className="py-20 md:py-24">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +90,7 @@ export const PortfolioSection = () => {
         </motion.div>
 
         {/* Concept Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -134,7 +126,7 @@ export const PortfolioSection = () => {
                     </div>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="glass-strong border-white/10 max-w-lg mx-4">
+                <DialogContent className="glass-strong border-white/10 max-w-lg mx-4 bg-[#0a0a0a]">
                   <DialogHeader>
                     <DialogTitle className="font-serif text-xl md:text-2xl text-foreground">
                       {project.name}

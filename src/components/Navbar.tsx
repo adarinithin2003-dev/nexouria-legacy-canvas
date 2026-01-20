@@ -10,7 +10,11 @@ const navLinks = [
   { name: "FAQ", href: "#faq" },
 ];
 
-export const Navbar = () => {
+interface NavbarProps {
+  onOpenQuoteModal: () => void;
+}
+
+export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -57,16 +61,14 @@ export const Navbar = () => {
           </nav>
 
           {/* CTA Button - Far Right */}
-          <motion.a
-            href="https://forms.gle/yRr9S7CBdBNpra8c9"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={onOpenQuoteModal}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple flex-shrink-0 ml-auto"
           >
             INQUIRE
-          </motion.a>
+          </motion.button>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -99,16 +101,16 @@ export const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <motion.a
-                href="https://forms.gle/yRr9S7CBdBNpra8c9"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <motion.button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenQuoteModal();
+                }}
                 whileTap={{ scale: 0.98 }}
                 className="mt-2 px-5 py-3 text-center text-sm font-semibold rounded-full btn-gradient-purple text-white"
               >
                 INQUIRE
-              </motion.a>
+              </motion.button>
             </nav>
           </motion.div>
         )}

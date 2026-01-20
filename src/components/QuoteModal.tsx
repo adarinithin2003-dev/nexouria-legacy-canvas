@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -12,11 +12,23 @@ import {
 } from "@/components/ui/select";
 import { openWhatsAppQuote, SERVICE_OPTIONS, BUDGET_OPTIONS } from "@/lib/whatsapp";
 
-export const ContactSection = () => {
+interface QuoteModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  preselectedService?: string;
+}
+
+export const QuoteModal = ({ isOpen, onClose, preselectedService }: QuoteModalProps) => {
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
-  const [service, setService] = useState("");
+  const [service, setService] = useState(preselectedService || "");
   const [budget, setBudget] = useState("");
+
+  useEffect(() => {
+    if (preselectedService) {
+      setService(preselectedService);
+    }
+  }, [preselectedService]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,82 +44,67 @@ export const ContactSection = () => {
       budget,
     });
 
-    // Reset form
+    // Reset form and close modal
     setName("");
     setCompany("");
     setService("");
     setBudget("");
+    onClose();
   };
 
   const isFormValid = name.trim() && company.trim() && service && budget;
 
   return (
-    <section id="contact" className="py-20 md:py-24 relative overflow-hidden">
-      {/* Mesh Gradient Blobs */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <motion.div 
-          className="mesh-gradient-blob mesh-blob-purple w-[600px] h-[600px] -top-40 -right-40"
-          animate={{
-            x: [0, 30, -20, 0],
-            y: [0, -30, 20, 0],
-            scale: [1, 1.05, 0.95, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div 
-          className="mesh-gradient-blob mesh-blob-cyan w-[500px] h-[500px] bottom-0 -left-40"
-          animate={{
-            x: [0, -30, 40, 0],
-            y: [0, 40, -20, 0],
-            scale: [1, 0.9, 1.1, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto"
-        >
-          {/* Header */}
-          <div className="text-center mb-10">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight mb-4 text-gradient-hero">
-              Ready to Dominate?
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Schedule a Demo
-            </p>
-          </div>
-
-          {/* Premium Glass Form */}
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-10 shadow-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+          />
+
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[95%] max-w-lg"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name & Company Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl">
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+              >
+                <X className="w-5 h-5 text-muted-foreground" />
+              </button>
+
+              {/* Header */}
+              <div className="text-center mb-8">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <MessageCircle className="w-7 h-7 text-white" />
+                </div>
+                <h2 className="font-serif text-2xl md:text-3xl font-medium text-gradient-hero mb-2">
+                  Get Your Quote
+                </h2>
+                <p className="text-muted-foreground text-sm">
+                  Fill in your details and we'll connect on WhatsApp instantly
+                </p>
+              </div>
+
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
-                  <label htmlFor="contact-name" className="text-sm font-medium text-foreground">
+                  <label htmlFor="name" className="text-sm font-medium text-foreground">
                     Your Name
                   </label>
                   <Input
-                    id="contact-name"
+                    id="name"
                     type="text"
                     placeholder="John Doe"
                     value={name}
@@ -118,11 +115,11 @@ export const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="contact-company" className="text-sm font-medium text-foreground">
+                  <label htmlFor="company" className="text-sm font-medium text-foreground">
                     Company / Business
                   </label>
                   <Input
-                    id="contact-company"
+                    id="company"
                     type="text"
                     placeholder="Acme Inc."
                     value={company}
@@ -131,12 +128,9 @@ export const ContactSection = () => {
                     required
                   />
                 </div>
-              </div>
 
-              {/* Service & Budget Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="contact-service" className="text-sm font-medium text-foreground">
+                  <label htmlFor="service" className="text-sm font-medium text-foreground">
                     Service Needed
                   </label>
                   <Select value={service} onValueChange={setService}>
@@ -158,7 +152,7 @@ export const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="contact-budget" className="text-sm font-medium text-foreground">
+                  <label htmlFor="budget" className="text-sm font-medium text-foreground">
                     Budget Range
                   </label>
                   <Select value={budget} onValueChange={setBudget}>
@@ -178,22 +172,21 @@ export const ContactSection = () => {
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
 
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                disabled={!isFormValid}
-                className="w-full h-14 mt-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c35e] hover:to-[#0d7a6d] text-white font-semibold text-base shadow-lg shadow-[#25D366]/30 disabled:opacity-50 disabled:cursor-not-allowed group"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Chat on WhatsApp
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </form>
+                <Button
+                  type="submit"
+                  disabled={!isFormValid}
+                  className="w-full h-14 mt-6 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#22c35e] hover:to-[#0d7a6d] text-white font-semibold text-base shadow-lg shadow-[#25D366]/30 disabled:opacity-50 disabled:cursor-not-allowed group"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Start WhatsApp Chat
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </form>
+            </div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
