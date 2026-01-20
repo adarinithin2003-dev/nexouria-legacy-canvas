@@ -14,11 +14,7 @@ import { FloatingWidgets } from "@/components/FloatingWidgets";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: '#0a0a0a' }}>
-      {/* Aurora ambient gradients */}
-      <div className="aurora-gradient aurora-top-right" />
-      <div className="aurora-gradient aurora-bottom-left" />
-      
+    <div className="relative min-h-screen" style={{ backgroundColor: '#050505' }}>
       {/* Noise overlay */}
       <div className="noise-overlay" />
       
