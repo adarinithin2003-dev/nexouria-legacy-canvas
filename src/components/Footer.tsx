@@ -10,41 +10,41 @@ const quickLinks = [
 ];
 
 const socials = [
-  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/916302967060", color: "bg-whatsapp" },
+  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/916302967060" },
   { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/nexouria.digital" },
   { name: "Email", icon: Mail, href: "mailto:nexouriadeveloper@gmail.com" },
 ];
 
 export const Footer = () => {
   return (
-    <footer className="py-20 lg:py-28 border-t border-white/5 bg-white/[0.01]">
-      <div className="container px-4">
+    <footer className="py-16 md:py-20 lg:py-24 border-t border-white/5 bg-white/[0.01]">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid md:grid-cols-3 gap-12 lg:gap-16 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-16 mb-12 md:mb-16"
         >
           {/* Logo & Brand */}
-          <div>
-            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-[50px] w-auto mb-4 rounded-lg" />
-            <p className="text-muted-foreground leading-relaxed max-w-xs">
+          <div className="text-center md:text-left">
+            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-12 md:h-[50px] w-auto mb-4 rounded-lg mx-auto md:mx-0" />
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xs mx-auto md:mx-0">
               Crafting digital legacies for visionary brands ready to dominate the global stage.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-start md:items-center">
-            <h3 className="font-semibold text-foreground mb-6 text-sm uppercase tracking-wider">
+          <div className="text-center">
+            <h3 className="font-semibold text-foreground mb-4 md:mb-6 text-xs md:text-sm uppercase tracking-wider">
               Quick Links
             </h3>
-            <nav className="flex flex-col gap-3" aria-label="Footer navigation">
+            <nav className="flex flex-col gap-2 md:gap-3" aria-label="Footer navigation">
               {quickLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
+                  className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -53,18 +53,21 @@ export const Footer = () => {
           </div>
 
           {/* Social */}
-          <div className="flex flex-col items-start md:items-end">
-            <div className="flex items-center gap-4 mb-6">
+          <div className="text-center md:text-right">
+            <h3 className="font-semibold text-foreground mb-4 md:mb-6 text-xs md:text-sm uppercase tracking-wider">
+              Connect
+            </h3>
+            <div className="flex items-center justify-center md:justify-end gap-3 md:gap-4">
               {socials.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
+                  className="w-10 h-10 md:w-11 md:h-11 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
                   aria-label={social.name}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               ))}
             </div>
@@ -77,9 +80,9 @@ export const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="pt-8 border-t border-white/5 text-center"
+          className="pt-6 md:pt-8 border-t border-white/5 text-center"
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs md:text-sm text-muted-foreground">
             © 2025 Nexouria Digital. Proudly Engineered in India 🇮🇳
           </p>
         </motion.div>
