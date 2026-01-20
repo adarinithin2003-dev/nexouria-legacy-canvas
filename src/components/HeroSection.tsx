@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  onOpenQuoteModal: () => void;
+}
+
+export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
   return (
     <section
       id="home"
@@ -91,19 +95,17 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <motion.a
-            href="https://forms.gle/yRr9S7CBdBNpra8c9"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.button
+            onClick={onOpenQuoteModal}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full btn-gradient btn-shimmer btn-glow text-background font-semibold text-sm md:text-base w-full sm:w-auto justify-center"
           >
             Start Your Project
             <ArrowRight className="w-5 h-5" />
-          </motion.a>
+          </motion.button>
           <motion.a
-            href="/brochure.png"
+            href="/assets/brochure.png"
             download="Nexouria_Brochure.png"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}

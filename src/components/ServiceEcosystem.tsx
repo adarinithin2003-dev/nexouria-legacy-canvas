@@ -2,39 +2,46 @@ import { motion } from "framer-motion";
 import { Monitor, Rocket, Fingerprint, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+interface ServiceEcosystemProps {
+  onOpenQuoteModal: (service?: string) => void;
+}
+
 const services = [
   {
     icon: Monitor,
     title: "High-Performance Websites",
     description: "Custom React/Next.js builds. No templates. Fast & Scalable.",
     buttonText: "Get Web Quote",
-    buttonVariant: "purple" as const,
-    whatsappLink: "https://wa.me/916302967060?text=Hi%20Nexouria%2C%20I%20am%20%5BMy%20Name%5D%20from%20%5BMy%20Business%5D.%20I%20need%20a%20quote%20for%20Web%20Development.",
+    service: "Web Development",
     accentColor: "from-purple-500 to-violet-600",
     borderColor: "group-hover:border-purple-500/50",
     glowColor: "group-hover:shadow-purple-500/25",
+    buttonClass: "bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40",
+    isLarge: true,
   },
   {
     icon: Rocket,
-    title: "Growth & Marketing Engines",
+    title: "Growth Engines",
     description: "SEO, Social Media, and Performance Ads that drive revenue.",
     buttonText: "Get Marketing Quote",
-    buttonVariant: "cyan" as const,
-    whatsappLink: "https://wa.me/916302967060?text=Hi%20Nexouria%2C%20I%20am%20%5BMy%20Name%5D%20from%20%5BMy%20Business%5D.%20I%20need%20a%20quote%20for%20Digital%20Marketing.",
+    service: "Digital Marketing",
     accentColor: "from-cyan-500 to-blue-600",
     borderColor: "group-hover:border-cyan-500/50",
     glowColor: "group-hover:shadow-cyan-500/25",
+    buttonClass: "bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40",
+    isLarge: false,
   },
   {
     icon: Fingerprint,
-    title: "Premium Branding",
+    title: "Visual Identity",
     description: "Logos and visual systems that make you unforgettable.",
     buttonText: "Get Branding Quote",
-    buttonVariant: "outline" as const,
-    whatsappLink: "https://wa.me/916302967060?text=Hi%20Nexouria%2C%20I%20am%20%5BMy%20Name%5D%20from%20%5BMy%20Business%5D.%20I%20need%20a%20quote%20for%20Branding.",
+    service: "Brand Identity",
     accentColor: "from-amber-500 to-orange-600",
     borderColor: "group-hover:border-amber-500/50",
     glowColor: "group-hover:shadow-amber-500/25",
+    buttonClass: "border-2 border-amber-500/50 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500 bg-transparent",
+    isLarge: false,
   },
 ];
 
@@ -59,11 +66,7 @@ const cardVariants = {
   },
 } as const;
 
-export const ServiceEcosystem = () => {
-  const handleQuoteClick = (link: string) => {
-    window.open(link, "_blank", "noopener,noreferrer");
-  };
-
+export const ServiceEcosystem = ({ onOpenQuoteModal }: ServiceEcosystemProps) => {
   return (
     <section id="services" className="py-20 md:py-24 relative overflow-hidden">
       {/* Subtle background gradient */}
@@ -95,76 +98,92 @@ export const ServiceEcosystem = () => {
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
+        {/* Bento Grid - 1 Large + 2 Smaller */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8"
         >
-          {services.map((service, index) => (
+          {/* Large Card - Web Development */}
+          <motion.article
+            variants={cardVariants}
+            className={`group relative p-8 md:p-10 rounded-2xl h-full flex flex-col lg:row-span-2
+              bg-white/5 backdrop-blur-xl border border-white/10
+              ${services[0].borderColor} ${services[0].glowColor}
+              transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl`}
+          >
+            {/* Gradient accent line */}
+            <div className={`absolute top-0 left-8 right-8 h-px bg-gradient-to-r ${services[0].accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+            
+            {/* Icon container */}
+            <div className="relative mb-8">
+              <div className={`w-20 h-20 rounded-xl bg-gradient-to-br ${services[0].accentColor} p-[1px]`}>
+                <div className="w-full h-full rounded-xl bg-background/90 flex items-center justify-center">
+                  <Monitor className="w-10 h-10 text-foreground" />
+                </div>
+              </div>
+              <div className={`absolute inset-0 w-20 h-20 rounded-xl bg-gradient-to-br ${services[0].accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
+            </div>
+
+            {/* Content */}
+            <h3 className="font-serif text-2xl md:text-3xl font-medium mb-4 text-foreground">
+              {services[0].title}
+            </h3>
+            <p className="text-muted-foreground leading-relaxed mb-8 flex-grow text-lg">
+              {services[0].description}
+            </p>
+
+            {/* CTA Button */}
+            <Button
+              onClick={() => onOpenQuoteModal(services[0].service)}
+              className={`w-full inline-flex items-center justify-center gap-2 font-medium py-6 rounded-xl transition-all duration-300 group/btn ${services[0].buttonClass}`}
+            >
+              {services[0].buttonText}
+              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            </Button>
+          </motion.article>
+
+          {/* Smaller Cards */}
+          {services.slice(1).map((service) => (
             <motion.article
               key={service.title}
               variants={cardVariants}
-              className={`group relative p-8 md:p-10 rounded-2xl h-full flex flex-col
-                bg-white/5 backdrop-blur-lg border border-white/10
+              className={`group relative p-8 rounded-2xl h-full flex flex-col
+                bg-white/5 backdrop-blur-xl border border-white/10
                 ${service.borderColor} ${service.glowColor}
                 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl`}
             >
               {/* Gradient accent line */}
               <div className={`absolute top-0 left-8 right-8 h-px bg-gradient-to-r ${service.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               
-              {/* Icon container with loading pulse animation */}
-              <div className="relative mb-8">
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.accentColor} p-[1px]`}>
+              {/* Icon container */}
+              <div className="relative mb-6">
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.accentColor} p-[1px]`}>
                   <div className="w-full h-full rounded-xl bg-background/90 flex items-center justify-center">
                     <service.icon className="w-7 h-7 text-foreground" />
                   </div>
                 </div>
-                {/* Pulse ring animation */}
-                <div className={`absolute inset-0 w-16 h-16 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
+                <div className={`absolute inset-0 w-14 h-14 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
               </div>
 
               {/* Content */}
-              <h3 className="font-serif text-xl md:text-2xl font-medium mb-4 text-foreground">
+              <h3 className="font-serif text-xl md:text-2xl font-medium mb-3 text-foreground">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8 flex-grow">
+              <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">
                 {service.description}
               </p>
 
-              {/* CTA Button with glow effect */}
-              {service.buttonVariant === "purple" && (
-                <Button
-                  onClick={() => handleQuoteClick(service.whatsappLink)}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white font-medium py-6 rounded-xl shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300 group/btn"
-                >
-                  {service.buttonText}
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
-              )}
-              
-              {service.buttonVariant === "cyan" && (
-                <Button
-                  onClick={() => handleQuoteClick(service.whatsappLink)}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium py-6 rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all duration-300 group/btn"
-                >
-                  {service.buttonText}
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
-              )}
-              
-              {service.buttonVariant === "outline" && (
-                <Button
-                  onClick={() => handleQuoteClick(service.whatsappLink)}
-                  variant="outline"
-                  className="w-full inline-flex items-center justify-center gap-2 border-2 border-amber-500/50 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500 font-medium py-6 rounded-xl transition-all duration-300 group/btn"
-                >
-                  {service.buttonText}
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
-              )}
+              {/* CTA Button */}
+              <Button
+                onClick={() => onOpenQuoteModal(service.service)}
+                className={`w-full inline-flex items-center justify-center gap-2 font-medium py-5 rounded-xl transition-all duration-300 group/btn ${service.buttonClass}`}
+              >
+                {service.buttonText}
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </Button>
             </motion.article>
           ))}
         </motion.div>
