@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['Playfair Display', 'Georgia', 'serif'],
       },
       colors: {
@@ -58,7 +58,10 @@ export default {
         glow: {
           cyan: "hsl(var(--glow-cyan))",
           purple: "hsl(var(--glow-purple))",
-          blue: "hsl(var(--glow-blue))",
+        },
+        neon: {
+          cyan: "hsl(var(--neon-cyan))",
+          purple: "hsl(var(--electric-purple))",
         },
         whatsapp: "hsl(var(--whatsapp))",
         instagram: "hsl(var(--instagram))",

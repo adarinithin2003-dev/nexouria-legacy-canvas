@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, Instagram, Twitter, Globe } from "lucide-react";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 import nexouriaLogo from "@/assets/nexouria-logo.jpeg";
 
 const quickLinks = [
@@ -10,9 +10,9 @@ const quickLinks = [
 ];
 
 const socials = [
+  { name: "WhatsApp", icon: MessageCircle, href: "https://wa.me/916302967060", color: "bg-whatsapp" },
   { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/nexouria.digital" },
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Twitter", icon: Twitter, href: "#" },
+  { name: "Email", icon: Mail, href: "mailto:nexouriadeveloper@gmail.com" },
 ];
 
 export const Footer = () => {
@@ -28,7 +28,7 @@ export const Footer = () => {
         >
           {/* Logo & Brand */}
           <div>
-            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-[50px] w-auto mb-4" />
+            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-[50px] w-auto mb-4 rounded-lg" />
             <p className="text-muted-foreground leading-relaxed max-w-xs">
               Crafting digital legacies for visionary brands ready to dominate the global stage.
             </p>
@@ -44,7 +44,7 @@ export const Footer = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
                 >
                   {link.name}
                 </a>
@@ -52,20 +52,16 @@ export const Footer = () => {
             </nav>
           </div>
 
-          {/* Location & Social */}
+          {/* Social */}
           <div className="flex flex-col items-start md:items-end">
-            <div className="flex items-center gap-2 mb-6">
-              <Globe className="w-5 h-5 text-primary" />
-              <span className="text-foreground font-medium">Visakhapatnam to the World.</span>
-            </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mb-6">
               {socials.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-300"
+                  className="w-11 h-11 rounded-full glass flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300"
                   aria-label={social.name}
                 >
                   <social.icon className="w-5 h-5" />
@@ -81,13 +77,10 @@ export const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"
+          className="pt-8 border-t border-white/5 text-center"
         >
           <p className="text-sm text-muted-foreground">
-            © 2025 Nexouria Digital. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Built for Legacy.
+            © 2025 Nexouria Digital. Proudly Engineered in India 🇮🇳
           </p>
         </motion.div>
       </div>

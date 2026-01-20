@@ -13,7 +13,7 @@ export const TechMarquee = () => {
   const items = [...techStack, ...techStack];
 
   return (
-    <section className="py-12 border-y border-border/50 overflow-hidden">
+    <section className="py-12 border-y border-border/30 overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -24,10 +24,10 @@ export const TechMarquee = () => {
           {items.map((tech, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 px-12 text-muted-foreground/60 hover:text-muted-foreground transition-colors"
+              className="flex items-center gap-3 px-12 grayscale-hover cursor-default"
             >
-              <span className="text-2xl grayscale">{tech.icon}</span>
-              <span className="text-lg font-medium whitespace-nowrap">{tech.name}</span>
+              <span className="text-2xl">{tech.icon}</span>
+              <span className="text-lg font-medium whitespace-nowrap text-muted-foreground hover:text-foreground transition-colors">{tech.name}</span>
             </div>
           ))}
         </div>

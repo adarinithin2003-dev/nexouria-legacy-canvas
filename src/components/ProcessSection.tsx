@@ -40,11 +40,11 @@ export const ProcessSection = () => {
           </h2>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px timeline-line hidden md:block" />
+        <div className="relative max-w-5xl mx-auto">
+          {/* Neon connecting line - Desktop */}
+          <div className="absolute top-1/2 left-0 right-0 h-1 neon-line hidden md:block" style={{ transform: 'translateY(-50%)' }} />
 
-          <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-4 md:gap-8">
+          <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-4 md:gap-8 relative">
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
@@ -54,8 +54,9 @@ export const ProcessSection = () => {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="relative text-center"
               >
-                <div className="glass rounded-2xl p-6 card-glow">
-                  <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-4">
+                {/* Card */}
+                <div className="glass rounded-2xl p-6 card-glow relative z-10 bg-background/80">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-4">
                     <step.icon className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-1">
@@ -65,9 +66,14 @@ export const ProcessSection = () => {
                     {step.description}
                   </p>
                 </div>
+                
+                {/* Step number */}
                 <div className="mt-4 text-3xl font-serif text-gradient-accent font-bold">
                   0{index + 1}
                 </div>
+
+                {/* Neon dot on line - Desktop */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary hidden md:block" style={{ boxShadow: '0 0 15px hsl(186 100% 50%), 0 0 30px hsl(186 100% 50% / 0.5)' }} />
               </motion.div>
             ))}
           </div>

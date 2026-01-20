@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import nexouriaLogo from "@/assets/nexouria-logo.jpeg";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
+  { name: "Work", href: "#portfolio" },
+  { name: "Process", href: "#process" },
   { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Contact", href: "#contact" },
+  { name: "FAQ", href: "#faq" },
 ];
 
 export const Navbar = () => {
@@ -27,14 +27,17 @@ export const Navbar = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass py-4" : "py-6"
-      }`}
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl"
     >
-      <div className="container mx-auto flex items-center justify-between">
+      {/* Floating Glass Pill Navbar */}
+      <div
+        className={`flex items-center justify-between px-4 md:px-6 py-3 rounded-full glass-strong transition-all duration-500 ${
+          isScrolled ? "shadow-lg shadow-black/20" : ""
+        }`}
+      >
         {/* Logo */}
         <a href="#home" className="flex items-center">
-          <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto" />
+          <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
         </a>
 
         {/* Center Navigation - Desktop */}
@@ -52,10 +55,12 @@ export const Navbar = () => {
 
         {/* CTA Button - Desktop */}
         <motion.a
-          href="#contact"
+          href="https://forms.gle/yRr9S7CBdBNpra8c9"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full bg-primary text-primary-foreground transition-all duration-300 shadow-lg shadow-primary/30"
+          className="hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
         >
           INQUIRE
         </motion.a>
@@ -73,13 +78,13 @@ export const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong mt-4 mx-4 rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="md:hidden glass-strong mt-2 mx-2 rounded-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
-              <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto mb-4" />
+              <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto mb-4 rounded-lg" />
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -91,10 +96,12 @@ export const Navbar = () => {
                 </a>
               ))}
               <motion.a
-                href="#contact"
+                href="https://forms.gle/yRr9S7CBdBNpra8c9"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
                 whileTap={{ scale: 0.98 }}
-                className="mt-2 px-5 py-3 text-center text-sm font-semibold rounded-full bg-primary text-primary-foreground"
+                className="mt-2 px-5 py-3 text-center text-sm font-semibold rounded-full btn-gradient-purple text-white"
               >
                 INQUIRE
               </motion.a>
