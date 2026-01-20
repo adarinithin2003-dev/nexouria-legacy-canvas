@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { TrustTicker } from "@/components/TrustTicker";
 import { TechMarquee } from "@/components/TechMarquee";
 import { StatsSection } from "@/components/StatsSection";
-import { BlueprintSection } from "@/components/BlueprintSection";
+import { ServiceEcosystem } from "@/components/ServiceEcosystem";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -28,7 +28,7 @@ const Index = () => {
         <TrustTicker />
         <TechMarquee />
         <StatsSection />
-        <BlueprintSection />
+        <ServiceEcosystem />
         <PortfolioSection />
         <ProcessSection />
         <TestimonialsSection />
