@@ -36,17 +36,19 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
       <div className="w-[90%] max-w-7xl mx-auto relative">
         {/* Floating Glass Pill Navbar */}
         <div
-          className={`relative flex items-center justify-between px-6 py-4 rounded-full glass-strong backdrop-blur-md transition-all duration-500 ${
+          className={`relative flex items-center justify-between px-8 py-4 w-full rounded-full glass-strong backdrop-blur-md transition-all duration-500 ${
             isScrolled ? "shadow-lg shadow-black/20" : ""
           }`}
         >
           {/* Logo - Far Left */}
-          <a href="#home" className="flex-shrink-0 w-32 z-10">
-            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
-          </a>
+          <div className="flex-shrink-0 z-10">
+            <a href="#home">
+              <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
+            </a>
+          </div>
 
           {/* Center Navigation - Desktop (Absolutely Centered) */}
-          <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
+          <nav className="hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
@@ -61,14 +63,16 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
           </nav>
 
           {/* CTA Button - Far Right */}
-          <motion.button
-            onClick={onOpenQuoteModal}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple flex-shrink-0 ml-auto"
-          >
-            INQUIRE
-          </motion.button>
+          <div className="flex-shrink-0 z-10">
+            <motion.button
+              onClick={onOpenQuoteModal}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
+            >
+              INQUIRE
+            </motion.button>
+          </div>
 
           {/* Mobile Menu Toggle */}
           <button

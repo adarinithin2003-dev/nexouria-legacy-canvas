@@ -71,7 +71,7 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-5xl md:text-7xl font-medium tracking-tight mb-8 leading-tight text-gradient-hero max-w-4xl mx-auto"
+          className="font-serif text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight mb-8 leading-tight text-gradient-hero max-w-4xl mx-auto"
         >
           Elevating Brands
           <br />

@@ -29,7 +29,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen" style={{ backgroundColor: '#050505' }}>
+    <div className="relative min-h-screen pb-32 scrollbar-hide" style={{ backgroundColor: '#050505' }}>
       {/* Noise overlay */}
       <div className="noise-overlay" />
       
