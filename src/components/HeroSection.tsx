@@ -71,7 +71,7 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-serif text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight mb-8 leading-tight text-gradient-hero max-w-4xl mx-auto"
+          className="font-serif text-5xl md:text-7xl font-medium tracking-tight leading-tight mb-8 text-gradient-hero max-w-4xl mx-auto"
         >
           Elevating Brands
           <br />
@@ -93,7 +93,7 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <motion.button
             onClick={onOpenQuoteModal}
@@ -105,8 +105,8 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
             <ArrowRight className="w-5 h-5" />
           </motion.button>
           <motion.a
-            href="/assets/brochure.png"
-            download="Nexouria_Brochure.png"
+            href="/assets/brochure.pdf"
+            download="Nexouria_Brochure.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full glass btn-outline-glow text-sm md:text-base w-full sm:w-auto justify-center"
