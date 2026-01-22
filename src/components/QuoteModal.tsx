@@ -64,7 +64,7 @@ export const QuoteModal = ({ isOpen, onClose, preselectedService }: QuoteModalPr
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
           />
 
           {/* Modal */}
@@ -73,9 +73,9 @@ export const QuoteModal = ({ isOpen, onClose, preselectedService }: QuoteModalPr
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[95%] max-w-lg"
+            className="fixed left-[50%] top-[50%] z-[100] grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] px-4"
           >
-            <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl">
+            <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl max-h-[90vh] overflow-y-auto">
               {/* Close Button */}
               <button
                 onClick={onClose}
