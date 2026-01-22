@@ -33,12 +33,12 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-7xl rounded-full border border-white/10 bg-black/50 backdrop-blur-md px-8 py-4 flex items-center justify-between transition-all duration-500 ${
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-7xl rounded-full border border-white/10 bg-black/50 backdrop-blur-xl px-8 py-4 flex items-center justify-between transition-all duration-500 ${
           isScrolled ? "shadow-lg shadow-black/30 bg-black/70" : ""
         }`}
       >
         {/* Logo - Far Left */}
-        <div className="flex justify-start w-[140px]">
+        <div className="flex justify-start items-center">
           <a href="#home">
             <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
           </a>
@@ -57,13 +57,13 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
           ))}
         </nav>
 
-        {/* CTA Button - Far Right */}
-        <div className="flex justify-end w-[140px]">
+        {/* CTA Button - Far Right (Desktop) */}
+        <div className="hidden md:flex justify-end">
           <motion.button
             onClick={onOpenQuoteModal}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
           >
             INQUIRE
           </motion.button>
