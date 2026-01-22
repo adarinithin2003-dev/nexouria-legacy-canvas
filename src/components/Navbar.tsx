@@ -27,62 +27,56 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-4 left-0 right-0 z-50 px-4 md:px-6"
-    >
-      <div className="w-[90%] max-w-7xl mx-auto relative">
-        {/* Floating Glass Pill Navbar */}
-        <div
-          className={`relative flex items-center justify-between px-8 py-4 w-full rounded-full glass-strong backdrop-blur-md transition-all duration-500 ${
-            isScrolled ? "shadow-lg shadow-black/20" : ""
-          }`}
-        >
-          {/* Logo - Far Left */}
-          <div className="flex-shrink-0 z-10">
-            <a href="#home">
-              <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
-            </a>
-          </div>
-
-          {/* Center Navigation - Desktop (Absolutely Centered) */}
-          <nav className="hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 whitespace-nowrap"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-          </nav>
-
-          {/* CTA Button - Far Right */}
-          <div className="flex-shrink-0 z-10">
-            <motion.button
-              onClick={onOpenQuoteModal}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
-            >
-              INQUIRE
-            </motion.button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-foreground"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+    <>
+      {/* Floating Glass Pill Navbar - Centered at top */}
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-7xl rounded-full border border-white/10 bg-black/50 backdrop-blur-md px-8 py-4 flex items-center justify-between transition-all duration-500 ${
+          isScrolled ? "shadow-lg shadow-black/30 bg-black/70" : ""
+        }`}
+      >
+        {/* Logo - Far Left */}
+        <div className="flex justify-start w-[140px]">
+          <a href="#home">
+            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
+          </a>
         </div>
-      </div>
+
+        {/* Center Navigation - Desktop (Absolutely Centered) */}
+        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 whitespace-nowrap"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA Button - Far Right */}
+        <div className="flex justify-end w-[140px]">
+          <motion.button
+            onClick={onOpenQuoteModal}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="hidden md:inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
+          >
+            INQUIRE
+          </motion.button>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="md:hidden p-2 text-foreground"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </motion.header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -91,7 +85,7 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden glass-strong backdrop-blur-md mt-2 mx-0 rounded-2xl overflow-hidden max-w-5xl mx-auto"
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-7xl md:hidden border border-white/10 bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
               <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto mb-4 rounded-lg" />
@@ -119,6 +113,6 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   );
 };

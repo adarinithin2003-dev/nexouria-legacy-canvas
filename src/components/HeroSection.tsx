@@ -93,7 +93,7 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <motion.button
             onClick={onOpenQuoteModal}

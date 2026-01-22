@@ -58,7 +58,7 @@ export const QuoteModal = ({ isOpen, onClose, preselectedService }: QuoteModalPr
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop - Full screen overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -67,21 +67,21 @@ export const QuoteModal = ({ isOpen, onClose, preselectedService }: QuoteModalPr
             className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
           />
 
-          {/* Modal */}
+          {/* Modal - Perfectly centered */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-[50%] top-[50%] z-[100] grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] px-4"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed left-[50%] top-[50%] z-[100] w-[calc(100%-2rem)] max-w-lg translate-x-[-50%] translate-y-[-50%]"
           >
-            <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl max-h-[90vh] overflow-y-auto">
+            <div className="relative bg-black/95 border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl max-h-[85vh] overflow-y-auto">
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                className="absolute right-4 top-4 rounded-sm opacity-70 hover:opacity-100 transition-opacity p-1"
               >
-                <X className="w-5 h-5 text-muted-foreground" />
+                <X className="w-5 h-5 text-foreground" />
               </button>
 
               {/* Header */}
