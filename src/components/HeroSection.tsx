@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
+import { TextDecode } from "@/components/animations/TextDecode";
+import { MagneticButton } from "@/components/animations/MagneticButton";
 
 interface HeroSectionProps {
   onOpenQuoteModal: () => void;
@@ -73,9 +75,11 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="font-serif text-5xl md:text-7xl font-medium tracking-tight leading-tight mb-8 text-gradient-hero max-w-4xl mx-auto"
         >
-          Elevating Brands
-          <br />
-          through Digital Innovation.
+          <TextDecode 
+            text="Elevating Brands through Digital Innovation." 
+            delay={500} 
+            duration={1200}
+          />
         </motion.h1>
 
         <motion.p
@@ -93,17 +97,15 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
-          <motion.button
+          <MagneticButton
             onClick={onOpenQuoteModal}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full btn-gradient btn-shimmer btn-glow text-background font-semibold text-sm md:text-base w-full sm:w-auto justify-center"
           >
             Start Your Project
             <ArrowRight className="w-5 h-5" />
-          </motion.button>
+          </MagneticButton>
           <motion.a
             href="/assets/brochure.pdf"
             download="Nexouria_Brochure.pdf"

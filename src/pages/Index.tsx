@@ -13,6 +13,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { FloatingWidgets } from "@/components/FloatingWidgets";
 import { QuoteModal } from "@/components/QuoteModal";
+import { ScrollProgress } from "@/components/animations/ScrollProgress";
 
 const Index = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -30,6 +31,9 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen pb-32 scrollbar-hide" style={{ backgroundColor: '#050505' }}>
+      {/* Scroll Progress Bar */}
+      <ScrollProgress />
+      
       {/* Noise overlay */}
       <div className="noise-overlay" />
       

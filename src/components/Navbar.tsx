@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import nexouriaLogo from "@/assets/nexouria-logo.jpeg";
+import { MagneticButton } from "@/components/animations/MagneticButton";
 
 const navLinks = [
   { name: "Work", href: "#portfolio" },
@@ -37,10 +38,10 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
           isScrolled ? "shadow-lg shadow-black/30 bg-black/70" : ""
         }`}
       >
-        {/* Logo - Far Left */}
-        <div className="flex justify-start items-center">
-          <a href="#home">
-            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg" />
+        {/* Logo - Far Left (Transparent background) */}
+        <div className="flex justify-start items-center bg-transparent">
+          <a href="#home" className="bg-transparent">
+            <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg bg-transparent" />
           </a>
         </div>
 
@@ -57,16 +58,14 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
           ))}
         </nav>
 
-        {/* CTA Button - Far Right (Desktop) */}
+        {/* CTA Button - Far Right (Desktop) with Magnetic Effect */}
         <div className="hidden md:flex justify-end">
-          <motion.button
+          <MagneticButton
             onClick={onOpenQuoteModal}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
             className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
           >
             INQUIRE
-          </motion.button>
+          </MagneticButton>
         </div>
 
         {/* Mobile Menu Toggle */}
