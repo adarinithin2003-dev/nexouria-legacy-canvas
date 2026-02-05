@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Monitor, Rocket, Fingerprint, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MovingBorderCard } from "@/components/animations/MovingBorderCard";
 
 interface ServiceEcosystemProps {
   onOpenQuoteModal: (service?: string) => void;
@@ -106,85 +107,82 @@ export const ServiceEcosystem = ({ onOpenQuoteModal }: ServiceEcosystemProps) =>
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8"
         >
-          {/* Large Card - Web Development */}
-          <motion.article
-            variants={cardVariants}
-            className={`group relative p-8 md:p-10 rounded-2xl h-full flex flex-col lg:row-span-2
-              bg-white/5 backdrop-blur-xl border border-white/10
-              ${services[0].borderColor} ${services[0].glowColor}
-              transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl`}
-          >
-            {/* Gradient accent line */}
-            <div className={`absolute top-0 left-8 right-8 h-px bg-gradient-to-r ${services[0].accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-            
-            {/* Icon container */}
-            <div className="relative mb-8">
-              <div className={`w-20 h-20 rounded-xl bg-gradient-to-br ${services[0].accentColor} p-[1px]`}>
-                <div className="w-full h-full rounded-xl bg-background/90 flex items-center justify-center">
-                  <Monitor className="w-10 h-10 text-foreground" />
-                </div>
-              </div>
-              <div className={`absolute inset-0 w-20 h-20 rounded-xl bg-gradient-to-br ${services[0].accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
-            </div>
-
-            {/* Content */}
-            <h3 className="font-serif text-2xl md:text-3xl font-medium mb-4 text-foreground">
-              {services[0].title}
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-8 flex-grow text-lg">
-              {services[0].description}
-            </p>
-
-            {/* CTA Button */}
-            <Button
-              onClick={() => onOpenQuoteModal(services[0].service)}
-              className={`w-full inline-flex items-center justify-center gap-2 font-medium py-6 rounded-xl transition-all duration-300 group/btn ${services[0].buttonClass}`}
+          {/* Large Card - Web Development with Moving Border */}
+          <motion.div variants={cardVariants} className="lg:row-span-2">
+            <MovingBorderCard 
+              borderColor="hsl(186 100% 50%)"
+              duration={4}
+              className="h-full"
             >
-              {services[0].buttonText}
-              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </Button>
-          </motion.article>
-
-          {/* Smaller Cards */}
-          {services.slice(1).map((service) => (
-            <motion.article
-              key={service.title}
-              variants={cardVariants}
-              className={`group relative p-8 rounded-2xl h-full flex flex-col
-                bg-white/5 backdrop-blur-xl border border-white/10
-                ${service.borderColor} ${service.glowColor}
-                transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl`}
-            >
-              {/* Gradient accent line */}
-              <div className={`absolute top-0 left-8 right-8 h-px bg-gradient-to-r ${service.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
-              {/* Icon container */}
-              <div className="relative mb-6">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.accentColor} p-[1px]`}>
-                  <div className="w-full h-full rounded-xl bg-background/90 flex items-center justify-center">
-                    <service.icon className="w-7 h-7 text-foreground" />
+              <article className="group relative p-8 md:p-10 h-full flex flex-col bg-white/5 backdrop-blur-xl rounded-2xl transition-all duration-500 hover:-translate-y-2">
+                {/* Icon container */}
+                <div className="relative mb-8">
+                  <div className={`w-20 h-20 rounded-xl bg-gradient-to-br ${services[0].accentColor} p-[1px]`}>
+                    <div className="w-full h-full rounded-xl bg-background/90 flex items-center justify-center">
+                      <Monitor className="w-10 h-10 text-foreground" />
+                    </div>
                   </div>
+                  <div className={`absolute inset-0 w-20 h-20 rounded-xl bg-gradient-to-br ${services[0].accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
                 </div>
-                <div className={`absolute inset-0 w-14 h-14 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
-              </div>
 
-              {/* Content */}
-              <h3 className="font-serif text-xl md:text-2xl font-medium mb-3 text-foreground">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">
-                {service.description}
-              </p>
+                {/* Content */}
+                <h3 className="font-serif text-2xl md:text-3xl font-medium mb-4 text-foreground">
+                  {services[0].title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-8 flex-grow text-lg">
+                  {services[0].description}
+                </p>
 
-              {/* CTA Button */}
-              <Button
-                onClick={() => onOpenQuoteModal(service.service)}
-                className={`w-full inline-flex items-center justify-center gap-2 font-medium py-5 rounded-xl transition-all duration-300 group/btn ${service.buttonClass}`}
+                {/* CTA Button */}
+                <Button
+                  onClick={() => onOpenQuoteModal(services[0].service)}
+                  className={`w-full inline-flex items-center justify-center gap-2 font-medium py-6 rounded-xl transition-all duration-300 group/btn ${services[0].buttonClass}`}
+                >
+                  {services[0].buttonText}
+                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                </Button>
+              </article>
+            </MovingBorderCard>
+          </motion.div>
+
+          {/* Smaller Cards with Moving Border */}
+          {services.slice(1).map((service, index) => (
+            <motion.div key={service.title} variants={cardVariants}>
+              <MovingBorderCard 
+                borderColor={index === 0 ? "hsl(186 100% 50%)" : "hsl(271 76% 53%)"}
+                duration={5 + index}
+                className="h-full"
               >
-                {service.buttonText}
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </Button>
-            </motion.article>
+                <article className="group relative p-8 h-full flex flex-col bg-white/5 backdrop-blur-xl rounded-2xl transition-all duration-500 hover:-translate-y-2">
+                  {/* Icon container */}
+                  <div className="relative mb-6">
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.accentColor} p-[1px]`}>
+                      <div className="w-full h-full rounded-xl bg-background/90 flex items-center justify-center">
+                        <service.icon className="w-7 h-7 text-foreground" />
+                      </div>
+                    </div>
+                    <div className={`absolute inset-0 w-14 h-14 rounded-xl bg-gradient-to-br ${service.accentColor} opacity-0 group-hover:opacity-30 animate-ping`} style={{ animationDuration: '2s' }} />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="font-serif text-xl md:text-2xl font-medium mb-3 text-foreground">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    {service.description}
+                  </p>
+
+                  {/* CTA Button */}
+                  <Button
+                    onClick={() => onOpenQuoteModal(service.service)}
+                    className={`w-full inline-flex items-center justify-center gap-2 font-medium py-5 rounded-xl transition-all duration-300 group/btn ${service.buttonClass}`}
+                  >
+                    {service.buttonText}
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </Button>
+                </article>
+              </MovingBorderCard>
+            </motion.div>
           ))}
         </motion.div>
 
