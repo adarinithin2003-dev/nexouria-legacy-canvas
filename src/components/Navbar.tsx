@@ -34,7 +34,7 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-7xl rounded-full border border-white/10 bg-black/50 backdrop-blur-xl px-8 py-4 flex items-center justify-between transition-all duration-500 ${
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-7xl rounded-full border border-white/10 bg-black/50 backdrop-blur-md px-6 py-4 flex items-center justify-between transition-all duration-500 ${
           isScrolled ? "shadow-lg shadow-black/30 bg-black/70" : ""
         }`}
       >
