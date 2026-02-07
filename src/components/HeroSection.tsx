@@ -3,11 +3,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { TextDecode } from "@/components/animations/TextDecode";
 import { MagneticButton } from "@/components/animations/MagneticButton";
 
-interface HeroSectionProps {
-  onOpenQuoteModal: () => void;
-}
-
-export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
+export const HeroSection = () => {
   return (
     <section
       id="home"
@@ -100,7 +96,7 @@ export const HeroSection = ({ onOpenQuoteModal }: HeroSectionProps) => {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <MagneticButton
-            onClick={onOpenQuoteModal}
+            onClick={() => window.open("https://wa.me/916302967060?text=Hi%20Nexouria%2C%20I%20want%20to%20start%20a%20project.", "_blank", "noopener,noreferrer")}
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full btn-gradient btn-shimmer btn-glow text-background font-semibold text-sm md:text-base w-full sm:w-auto justify-center"
           >
             Start Your Project

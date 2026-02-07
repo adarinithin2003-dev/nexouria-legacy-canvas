@@ -11,11 +11,7 @@ const navLinks = [
   { name: "FAQ", href: "#faq" },
 ];
 
-interface NavbarProps {
-  onOpenQuoteModal: () => void;
-}
-
-export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
+export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -29,24 +25,23 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
 
   return (
     <>
-      {/* Floating Glass Pill Navbar - Centered at top */}
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-7xl rounded-full border border-white/10 bg-black/50 backdrop-blur-md px-6 py-4 flex items-center justify-between transition-all duration-500 ${
+        className={`fixed top-6 left-1/2 z-50 flex w-[90%] max-w-7xl -translate-x-1/2 items-center justify-between rounded-full border border-white/10 bg-black/50 backdrop-blur-md px-6 py-4 transition-all duration-500 ${
           isScrolled ? "shadow-lg shadow-black/30 bg-black/70" : ""
         }`}
       >
-        {/* Logo - Far Left (Transparent background) */}
-        <div className="flex justify-start items-center bg-transparent">
+        {/* Logo - Left */}
+        <div className="flex items-center bg-transparent">
           <a href="#home" className="bg-transparent">
             <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto rounded-lg bg-transparent" />
           </a>
         </div>
 
-        {/* Center Navigation - Desktop (Absolutely Centered) */}
-        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex gap-8">
+        {/* Nav Links - Dead Center */}
+        <nav className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 gap-8 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -58,10 +53,10 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
           ))}
         </nav>
 
-        {/* CTA Button - Far Right (Desktop) with Magnetic Effect */}
-        <div className="hidden md:flex justify-end">
+        {/* Inquire - Right */}
+        <div className="hidden md:flex">
           <MagneticButton
-            onClick={onOpenQuoteModal}
+            onClick={() => window.open("https://wa.me/916302967060?text=Hi%20Nexouria%2C%20I%20would%20like%20to%20inquire%20about%20your%20services.", "_blank", "noopener,noreferrer")}
             className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-full btn-gradient-purple text-white btn-shimmer btn-glow-purple"
           >
             INQUIRE
@@ -84,7 +79,7 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-[95%] max-w-7xl md:hidden border border-white/10 bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden"
+            className="fixed top-24 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-7xl md:hidden border border-white/10 bg-black/90 backdrop-blur-md rounded-2xl overflow-hidden"
           >
             <nav className="flex flex-col p-6 gap-4">
               <img src={nexouriaLogo} alt="Nexouria Digital" className="h-10 w-auto mb-4 rounded-lg" />
@@ -98,16 +93,15 @@ export const Navbar = ({ onOpenQuoteModal }: NavbarProps) => {
                   {link.name}
                 </a>
               ))}
-              <motion.button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onOpenQuoteModal();
-                }}
+              <motion.a
+                href="https://wa.me/916302967060?text=Hi%20Nexouria%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
+                target="_blank"
+                rel="noopener noreferrer"
                 whileTap={{ scale: 0.98 }}
                 className="mt-2 px-5 py-3 text-center text-sm font-semibold rounded-full btn-gradient-purple text-white"
               >
                 INQUIRE
-              </motion.button>
+              </motion.a>
             </nav>
           </motion.div>
         )}
