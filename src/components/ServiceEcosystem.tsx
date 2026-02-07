@@ -3,9 +3,11 @@ import { Monitor, Rocket, Fingerprint, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MovingBorderCard } from "@/components/animations/MovingBorderCard";
 
-interface ServiceEcosystemProps {
-  onOpenQuoteModal: (service?: string) => void;
-}
+const whatsappMessages: Record<string, string> = {
+  "Web Development": "Hi%20Nexouria%2C%20I%20need%20a%20Website.",
+  "Digital Marketing": "Hi%20Nexouria%2C%20I%20need%20Marketing.",
+  "Brand Identity": "Hi%20Nexouria%2C%20I%20need%20Branding.",
+};
 
 const services = [
   {
@@ -67,7 +69,7 @@ const cardVariants = {
   },
 } as const;
 
-export const ServiceEcosystem = ({ onOpenQuoteModal }: ServiceEcosystemProps) => {
+export const ServiceEcosystem = () => {
   return (
     <section id="services" className="py-20 md:py-24 relative overflow-hidden">
       {/* Subtle background gradient */}
@@ -135,7 +137,7 @@ export const ServiceEcosystem = ({ onOpenQuoteModal }: ServiceEcosystemProps) =>
 
                 {/* CTA Button */}
                 <Button
-                  onClick={() => onOpenQuoteModal(services[0].service)}
+                  onClick={() => window.open(`https://wa.me/916302967060?text=${whatsappMessages[services[0].service]}`, "_blank", "noopener,noreferrer")}
                   className={`w-full inline-flex items-center justify-center gap-2 font-medium py-6 rounded-xl transition-all duration-300 group/btn ${services[0].buttonClass}`}
                 >
                   {services[0].buttonText}
@@ -174,7 +176,7 @@ export const ServiceEcosystem = ({ onOpenQuoteModal }: ServiceEcosystemProps) =>
 
                   {/* CTA Button */}
                   <Button
-                    onClick={() => onOpenQuoteModal(service.service)}
+                    onClick={() => window.open(`https://wa.me/916302967060?text=${whatsappMessages[service.service]}`, "_blank", "noopener,noreferrer")}
                     className={`w-full inline-flex items-center justify-center gap-2 font-medium py-5 rounded-xl transition-all duration-300 group/btn ${service.buttonClass}`}
                   >
                     {service.buttonText}
