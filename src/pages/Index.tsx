@@ -14,6 +14,8 @@ import { Footer } from "@/components/Footer";
 import { FloatingWidgets } from "@/components/FloatingWidgets";
 import { QuoteModal } from "@/components/QuoteModal";
 import { ScrollProgress } from "@/components/animations/ScrollProgress";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const Index = () => {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
@@ -31,6 +33,9 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen pb-32 scrollbar-hide" style={{ backgroundColor: '#050505' }}>
+      {/* Loading Screen */}
+      <LoadingScreen />
+
       {/* Scroll Progress Bar */}
       <ScrollProgress />
       
@@ -59,6 +64,9 @@ const Index = () => {
       
       {/* Floating Widgets */}
       <FloatingWidgets />
+
+      {/* Scroll to Top */}
+      <ScrollToTop />
 
       {/* Quote Modal */}
       <QuoteModal 
