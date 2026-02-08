@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import fretAlchemyLogo from "@/assets/fretalchemy-logo.jpeg";
+import digipulseLogo from "@/assets/digipulse-logo.png";
 
 const featuredProject = {
   id: 0,
@@ -72,9 +73,7 @@ export const PortfolioSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden glass-card portfolio-card">
               <div className="p-10 md:p-14 lg:p-16 flex flex-col items-center justify-center bg-gradient-to-br from-primary/15 to-accent/15 min-h-[280px]">
-                <span className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium text-foreground/90 mb-4">
-                  DP
-                </span>
+                <img src={digipulseLogo} alt="DigiPulse" className="h-24 md:h-28 lg:h-32 w-auto object-contain mb-4" />
                 <span className="px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
                   {featuredProject.badge}
                 </span>
