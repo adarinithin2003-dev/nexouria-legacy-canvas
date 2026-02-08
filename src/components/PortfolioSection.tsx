@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
+import fretAlchemyLogo from "@/assets/fretalchemy-logo.jpeg";
 
 const featuredProject = {
   id: 0,
@@ -24,6 +24,7 @@ const projects = [
     id: 1,
     name: "Fret Alchemy",
     initials: "FA",
+    logo: fretAlchemyLogo,
     tags: ["Web Design", "Media Streaming", "Brand Identity"],
     description: "A digital stage for sonic artistry with custom media player integration and immersive music academy experience.",
     color: "from-primary/20 to-accent/20",
@@ -119,9 +120,13 @@ export const PortfolioSection = () => {
                 >
                   <div className="relative rounded-2xl overflow-hidden glass-card portfolio-card">
                     <div className={`p-10 md:p-12 lg:p-14 flex items-center justify-center bg-gradient-to-br ${project.color}`}>
-                      <span className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground/80">
-                        {project.initials}
-                      </span>
+                      {project.logo ? (
+                        <img src={project.logo} alt={project.name} className="h-20 md:h-24 w-auto object-contain brightness-110" />
+                      ) : (
+                        <span className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground/80">
+                          {project.initials}
+                        </span>
+                      )}
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full btn-primary-glow text-sm">
@@ -145,9 +150,13 @@ export const PortfolioSection = () => {
                     <div className="cursor-pointer group h-full flex flex-col">
                       <div className="relative rounded-2xl overflow-hidden glass-card portfolio-card">
                         <div className={`p-10 md:p-12 lg:p-14 flex items-center justify-center bg-gradient-to-br ${project.color}`}>
-                          <span className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground/80">
-                            {project.initials}
-                          </span>
+                          {project.logo ? (
+                            <img src={project.logo} alt={project.name} className="h-20 md:h-24 w-auto object-contain brightness-110" />
+                          ) : (
+                            <span className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-foreground/80">
+                              {project.initials}
+                            </span>
+                          )}
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                           <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full btn-primary-glow text-sm">
